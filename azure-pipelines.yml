@@ -19,6 +19,7 @@ stages:
         echo "##vso[task.setvariable variable=Date;isOutput=true]$Date"
         
 - stage: two
+  dependsOn: one
   jobs:
   - job: out
     steps:
