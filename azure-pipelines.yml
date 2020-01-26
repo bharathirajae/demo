@@ -22,7 +22,7 @@ stages:
   jobs:
   - job: out
     dependsOn: get
-      steps:
-      - bash: |
-          echo "today's date is $Date"
+    steps:
+    - bash: |
+        echo "today's date is $Date"
        
