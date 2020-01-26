@@ -16,5 +16,5 @@ stages:
     steps:
     - script: |
         Date=` date +'%m/%d/%Y' `
-        echo "##vso[task.setvariable variable=Date;isOutput=true]$Date""
+        echo "##vso[task.setvariable variable=Date;isOutput=true]$Date"
         echo "today date is $Date"
