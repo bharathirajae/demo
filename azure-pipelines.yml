@@ -22,7 +22,7 @@ stages:
 - stage: two
   dependsOn: one
   variables:
-    Date: $[ dependencies.one.get.outputs['Date'] ]
+    Date: $[ dependencies.get.outputs['Date'] ]
   jobs:
   - job: out
     steps:
