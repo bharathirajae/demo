@@ -25,4 +25,8 @@ stages:
     steps:
     - bash: |
         echo "today's date is $Date"
+  - job: test
+    steps:
+    - script: |
+        echo "test is done"
        
