@@ -26,6 +26,6 @@ stages:
   - job: out
     steps:
     - bash: |
-        echo "today's date is $Date"
+        echo "today's date is $(Date)"
   
        
