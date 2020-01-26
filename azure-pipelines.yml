@@ -15,7 +15,7 @@ stages:
   - job: test
     steps:
     - bash: |
-        Date= $(date +'%m/%d/%Y')
+        Date= `date +'%m/%d/%Y'`
         echo "##vso[task.setvariable variable=Date;isOutput=true]$Date"
     - bash: |
         echo "today's date is $Date"
