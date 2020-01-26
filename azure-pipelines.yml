@@ -17,7 +17,9 @@ stages:
     - bash: |
         Date="$(date +'%m/%d/%Y')"
         echo "##vso[task.setvariable variable=Date;isOutput=true]$Date"
+        
  - stage: two
+   jobs:
    - job: out
      dependsOn: get
        steps:
