@@ -17,12 +17,11 @@ stages:
     - bash: |
         Date="$(date +'%m/%d/%Y')"
         echo "##vso[task.setvariable variable=Date;isOutput=true]$Date"
-        name: save
         
 - stage: two
   dependsOn: one
   variables:
-    Date: $[ dependencies.one.get.outputs['save.Date'] ]
+    Date: $[ dependencies.one.get.outputs['Date'] ]
   jobs:
   - job: out
     steps:
