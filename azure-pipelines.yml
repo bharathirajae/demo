@@ -21,7 +21,6 @@ stages:
 - stage: two
   jobs:
   - job: out
-    dependsOn: get
     steps:
     - bash: |
         echo "today's date is $Date"
