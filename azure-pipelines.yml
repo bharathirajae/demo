@@ -17,4 +17,4 @@ stages:
     - bash: |
         Date= `date +'%m/%d/%Y'`
         echo "##vso[task.setvariable variable=Date;isOutput=true]$Date"
-        echo "today's date is $Date"
+        echo "today's date is $(Date)"
