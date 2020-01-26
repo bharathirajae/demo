@@ -12,9 +12,14 @@ pool:
 stages:
 - stage: one
   jobs:
-  - job: test
+  - job: get
     steps:
     - bash: |
         Date="$(date +'%m/%d/%Y')"
         echo "##vso[task.setvariable variable=Date;isOutput=true]$Date"
-        echo "today's date is $Date"
+   - job: out
+     dependsOn: get
+       steps:
+       - bash: |
+           echo "today's date is $Date"
+       
