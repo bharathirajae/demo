@@ -22,13 +22,11 @@ stages:
       name: var
     - bash: |
         echo "$(var.Date)"
-        
-- stage: two
-  dependsOn: one
-  variables:
-    curdate: $[ dependencies.get.outputs['var.Date'] ]
-  jobs:
+    
   - job: out
+    dependsOn: get
+    variables:
+      curdate: $[ dependencies.get.outputs['var.Date'] ]
     pool:
       vmImage: 'ubuntu-latest'
     steps:
