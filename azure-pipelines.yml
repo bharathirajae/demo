@@ -30,7 +30,7 @@ stages:
     pool:
       vmImage: 'ubuntu-latest'
     variables:
-    curdate: $[ dependencies.get.outputs['var.Date'] ]
+      curdate: $[ dependencies.get.outputs['var.Date'] ]
     steps:
     - script: |
         echo "today's date is $(curdate)"
