@@ -13,11 +13,13 @@ stages:
 - stage: one
   jobs:
   - job: get
+    pool:
+      vmImage: 'ubuntu-latest'
     steps:
     - bash: |
         Date="$(date +'%m/%d/%Y')"
-        echo "##vso[task.setvariable variable=Date;isOutput=true]$Date"
-        name: var
+        echo "##vso[task.setvariable variable=Date;isOutput=true]$Date
+      name: var
     - bash: |
         echo "$(var.Date)"
         
