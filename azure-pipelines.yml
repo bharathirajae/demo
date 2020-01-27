@@ -33,6 +33,6 @@ stages:
       vmImage: 'ubuntu-latest'
     steps:
     - script: |
-        echo "today's date is $curdate"
+        echo "today's date is $(curdate)"
   
        
