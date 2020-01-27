@@ -26,11 +26,13 @@ stages:
 - stage: two
   dependsOn: one
   variables:
-    Date: $[ dependencies.get.outputs['var.Date'] ]
+    curdate: $[ dependencies.one.get.outputs['get.var.Date'] ]
   jobs:
   - job: out
+    pool:
+      vmImage: 'ubuntu-latest'
     steps:
-    - bash: |
-        echo "today's date is $Date"
+    - script: |
+        echo "today's date is $curdate"
   
        
