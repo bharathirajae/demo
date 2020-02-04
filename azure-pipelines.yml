@@ -29,10 +29,10 @@ stages:
     
   - job: out
     dependsOn: get
-    condition: and(succeeded(), not(startsWith(variables['Build.SourceBranch'], 'refs/heads/test/')))
+    condition: and(succeeded(), not(startsWith(variables['Build.SourceBranch'], 'refs/heads/master/')))
     variables:
       curdate: $[ dependencies.get.outputs['var.Date'] ]
-      SourceBranch: $(variables[ 'Build.SourceBanch' ])
+      SourceBranch: ${Build.SourceBanch}
     pool:
       vmImage: 'ubuntu-latest'
     steps:
