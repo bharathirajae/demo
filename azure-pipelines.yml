@@ -17,15 +17,16 @@ stages:
     pool:
       vmImage: 'ubuntu-latest'
     steps:
+      condition: and (succeeded(), not(startsWith(variables['Build.SourceBranch'], 'refs/heads/master/')))
+        
     - script: |
         Date="$(date +'%m/%d/%Y')"
         echo "##vso[task.setvariable variable=Date;isOutput=true]$Date"
       name: var
     - bash: |
         echo "$(var.Date)"
-    - script: |
-        and (succeeded(), not(startsWith(variables['Build.SourceBranch'], 'refs/heads/master/')))
         echo ${Build.SourceBranch}
+    
   - job: out
     dependsOn: get
     variables:
