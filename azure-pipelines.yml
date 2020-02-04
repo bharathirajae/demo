@@ -20,7 +20,7 @@ stages:
     - script: |
         Date="$(date +'%m/%d/%Y')"
         echo "##vso[task.setvariable variable=Date;isOutput=true]$Date"
-        condition: and (succeeded(), not(startsWith(variables['Build.SourceBranch'], 'refs/heads/master/')))
+      condition: and (succeeded(), not(startsWith(variables['Build.SourceBranch'], 'refs/heads/master/'))
       name: var
     - bash: |
         echo "$(var.Date)"
