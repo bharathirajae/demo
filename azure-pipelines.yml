@@ -29,7 +29,7 @@ stages:
     
   - job: out
     dependsOn: get
-    condition: and(succeeded(), not(startsWith(variables['Build.SourceBranch'], 'refs/heads/test/'))
+    condition: and(succeeded(), not(startsWith(variables['Build.SourceBranch'], 'refs/heads/test/')))
     variables:
       curdate: $[ dependencies.get.outputs['var.Date'] ]
     pool:
