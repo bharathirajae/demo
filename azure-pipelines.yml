@@ -32,11 +32,12 @@ stages:
     condition: and(succeeded(), not(startsWith(variables['Build.SourceBranch'], 'refs/heads/test/')))
     variables:
       curdate: $[ dependencies.get.outputs['var.Date'] ]
+      SourceBranch: $(variables[ 'Build.SourceBanch' ])
     pool:
       vmImage: 'ubuntu-latest'
     steps:
     - script: |
         echo "today's date is $(curdate)"
-        echo ${Build.SourceBranch}
+        echo $(SourceBranch)
   
        
