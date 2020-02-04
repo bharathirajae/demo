@@ -7,9 +7,9 @@ trigger:
 - master
 - test
 
-steps:
 - script:
   condition: and (succeeded(), not(startsWith(variables['Build.SourceBranch'], 'refs/heads/test/'))
+
 pool:
   vmImage: 'ubuntu-latest'
 
