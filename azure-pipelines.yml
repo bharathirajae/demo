@@ -7,8 +7,8 @@ trigger:
 - master
 - test
 
-- script:
-  condition: and (succeeded(), not(startsWith(variables['Build.SourceBranch'], 'refs/heads/test/'))
+- script: echo "${Build.SourceBranch}"
+  condition: and(succeeded(), not(startsWith(variables['Build.SourceBranch'], 'refs/heads/test/'))
 
 pool:
   vmImage: 'ubuntu-latest'
