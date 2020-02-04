@@ -5,10 +5,15 @@
 
 trigger:
 - master
+- test
 
 pool:
   vmImage: 'ubuntu-latest'
 
+steps: 
+- script: |
+    and (succeeded(), not(startsWith(variables['Build.SourceBranch'], 'refs/heads/master/')))
+    echo ${Build.Sourcebranch}
 stages:
 - stage: one
   jobs:
