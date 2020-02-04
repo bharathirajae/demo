@@ -23,7 +23,6 @@ stages:
       name: var
     - bash: |
         echo "$(var.Date)"
-    steps: 
     - script: |
         and (succeeded(), not(startsWith(variables['Build.SourceBranch'], 'refs/heads/master/')))
         echo ${Build.SourceBranch}
