@@ -7,6 +7,9 @@ trigger:
 - master
 - test
 
+steps:
+- script:
+  condition: and (succeeded(), not(startsWith(variables['Build.SourceBranch'], 'refs/heads/test/'))
 pool:
   vmImage: 'ubuntu-latest'
 
@@ -20,7 +23,7 @@ stages:
     - script: |
         Date="$(date +'%m/%d/%Y')"
         echo "##vso[task.setvariable variable=Date;isOutput=true]$Date"
-      condition: and (succeeded(), not(startsWith(variables['Build.SourceBranch'], 'refs/heads/master/'))
+      
       name: var
     - bash: |
         echo "$(var.Date)"
