@@ -25,7 +25,7 @@ stages:
       name: var
     - bash: |
         echo "$(var.Date)"
-        echo ${Build.SourceBranch}
+        
     
   - job: out
     dependsOn: get
