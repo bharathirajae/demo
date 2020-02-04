@@ -10,11 +10,6 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
-steps: 
-- script: |
-    and (succeeded(), not(startsWith(variables['Build.SourceBranch'], 'refs/heads/master/')))
-    echo ${Build.Sourcebranch}
-    
 stages:
 - stage: one
   jobs:
@@ -28,7 +23,10 @@ stages:
       name: var
     - bash: |
         echo "$(var.Date)"
-    
+    steps: 
+    - script: |
+        and (succeeded(), not(startsWith(variables['Build.SourceBranch'], 'refs/heads/master/')))
+        echo ${Build.SourceBranch}
   - job: out
     dependsOn: get
     variables:
