@@ -6,9 +6,7 @@
 trigger:
 - master
 - test
-
-- script: echo "${Build.SourceBranch}"
-  condition: and(succeeded(), not(startsWith(variables['Build.SourceBranch'], 'refs/heads/test/'))
+  
 
 pool:
   vmImage: 'ubuntu-latest'
@@ -31,6 +29,7 @@ stages:
     
   - job: out
     dependsOn: get
+    condition: and(succeeded(), not(startsWith(variables['Build.SourceBranch'], 'refs/heads/test/'))
     variables:
       curdate: $[ dependencies.get.outputs['var.Date'] ]
     pool:
@@ -38,5 +37,6 @@ stages:
     steps:
     - script: |
         echo "today's date is $(curdate)"
+        echo ${Build.SourceBranch}
   
        
