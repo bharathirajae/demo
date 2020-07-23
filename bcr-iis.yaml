@@ -1,0 +1,47 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: bcr-iis01
+  labels:
+    app: bcr-iis01
+spec:
+  ports:
+    # the port that this service should serve on
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: 80
+    - name: sql
+      protocol: TCP
+      port: 1433
+      targetPort: 1433
+  selector:
+    app: bcr-iis01
+  type: NodePort
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: bcr-iis01
+  name: bcr-iis01
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bcr-iis01
+  template:
+    metadata:
+      labels:
+        app: bcr-iis01
+      name: bcr-iis01
+    spec:
+     containers:
+      - name: windowswebserver
+        image: azhackathon.azurecr.io/iisbcr-sql05
+        imagePullPolicy: Always
+     imagePullSecrets:
+      - name: azhack
+        
+     nodeSelector:
+      kubernetes.io/os: windows
